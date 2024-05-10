@@ -134,7 +134,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Aadhar Card",
+                                hintText: "Pan Card",
                                 hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
