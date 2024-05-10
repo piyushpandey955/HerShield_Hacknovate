@@ -1,5 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:hershield_1/map_page.dart';
 import 'package:hershield_1/notifcation_controller.dart';
 import 'package:hershield_1/resource/post_card.dart';
 
@@ -37,6 +38,12 @@ class _MyAppState extends State<MyApp> {
   //   );
   // }
 
+  Widget buildAreaProfilingScreen() {
+    return Scaffold(
+      body: const MapPage(),
+    );
+  }
+
   Widget buildHomeScreen() {
     return Center(
       child: Column(
@@ -51,8 +58,11 @@ class _MyAppState extends State<MyApp> {
             onPressed: () {
               // triggerNotification();
               AwesomeNotifications().createNotification(
-                content:
-                    NotificationContent(id: 1, channelKey: "basic_channel", title: "Notification Sent", body: '23 People within 500 m radius Notified'),
+                content: NotificationContent(
+                    id: 1,
+                    channelKey: "basic_channel",
+                    title: "Notification Sent",
+                    body: '23 People within 500 m radius Notified'),
               );
               // Handle button press
               setState(() {
@@ -96,12 +106,19 @@ class _MyAppState extends State<MyApp> {
         centerTitle: true,
       ),
       body: Center(
-          child: currentIndex == 1
-              ? buildHomeScreen()
-              : currentIndex == 0
-                  ? const BuildCommunityScreen()
-                  : const BuildProfileScreen()),
+        child: currentIndex == 2
+            ? buildHomeScreen()
+            : currentIndex == 0
+                ? BuildCommunityScreen()
+                : currentIndex == 3
+                    ? BuildProfileScreen()
+                    : currentIndex == 1
+                        ? buildAreaProfilingScreen()
+                        : buildHomeScreen(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
               label: 'Feed',
@@ -110,13 +127,13 @@ class _MyAppState extends State<MyApp> {
                 height: 30, // Adjust image height
                 child: Image.asset('images/community.png'),
               )),
-          // BottomNavigationBarItem(
-          //     label: 'Feed',
-          //     icon: SizedBox(
-          //       width: 30, // Adjust image width
-          //       height: 30, // Adjust image height
-          //       child: Image.asset('images/community.png'),
-          //     )),
+          BottomNavigationBarItem(
+              label: 'Area Profile',
+              icon: SizedBox(
+                width: 30, // Adjust image width
+                height: 30, // Adjust image height
+                child: Image.asset('images/area_profile.png'),
+              )),
           BottomNavigationBarItem(
               label: 'HOME',
               icon: SizedBox(
@@ -137,11 +154,11 @@ class _MyAppState extends State<MyApp> {
         onTap: (int index) {
           setState(() {
             currentIndex = index;
-            topTitle = currentIndex == 2
+            topTitle = currentIndex == 3
                 ? "Profile Section"
                 : currentIndex == 0
                     ? "Community Page"
-                    : "Shield";
+                    : "HerShield";
           });
         },
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hershield_1/login.dart';
+import 'package:hershield_1/map_page.dart';
 import 'package:hershield_1/register.dart';
 import 'package:hershield_1/home.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -35,6 +36,7 @@ void main() async {
         'login':(context) =>const Mylogin(),
         'register':(context)=>const MyRegister(),
         'home':(context) =>const MyApp()
+        // 'areaprofiling':(context) =>const MapPage()
         },
     ),
   );
