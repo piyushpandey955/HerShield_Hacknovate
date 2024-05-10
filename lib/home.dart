@@ -1,4 +1,6 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:hershield_1/notifcation_controller.dart';
 import 'package:hershield_1/resource/post_card.dart';
 
 class MyApp extends StatefulWidget {
@@ -15,6 +17,26 @@ class _MyAppState extends State<MyApp> {
   Color buttonColor = Colors.red;
   String afterClickHelp = 'Click to get Help';
 
+  @override
+  void initState() {
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+      onNotificationCreatedMethod:
+          NotificationController.onNotificationCreatedMethod,
+      onNotificationDisplayedMethod:
+          NotificationController.onNotificationDisplayMethod,
+      onDismissActionReceivedMethod:
+          NotificationController.onDismissActionReceivedMethod,
+    );
+    super.initState();
+  }
+
+  // triggerNotification () {
+  //   AwesomeNotifications().createNotification(
+  //     content: NotificationContent(id: 10, channelKey: 'basic_channel', title: 'Success', body: 'Alert sent to nearby protectors'),
+  //   );
+  // }
+
   Widget buildHomeScreen() {
     return Center(
       child: Column(
@@ -27,10 +49,15 @@ class _MyAppState extends State<MyApp> {
           ),
           ElevatedButton(
             onPressed: () {
+              // triggerNotification();
+              AwesomeNotifications().createNotification(
+                content:
+                    NotificationContent(id: 1, channelKey: "basic_channel", title: "Notification Sent", body: '23 People within 500 m radius Notified'),
+              );
               // Handle button press
               setState(() {
-                buttonName = 'Medical';
-                afterClickHelp = 'Click to get Medical Help';
+                buttonName = 'Seeker Mode';
+                afterClickHelp = 'Help is on the way';
                 buttonColor = Colors.blueAccent;
               });
             },
@@ -134,7 +161,6 @@ class BuildCommunityScreen extends StatelessWidget {
   }
 }
 
-
 class BuildProfileScreen extends StatelessWidget {
   const BuildProfileScreen({super.key});
 
@@ -173,7 +199,7 @@ class BuildProfileScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const AboutUsPage()),
-             );
+                );
               },
               icon: Icon(Icons.edit),
               label: Text('About US'),
@@ -184,7 +210,6 @@ class BuildProfileScreen extends StatelessWidget {
     );
   }
 }
-
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
