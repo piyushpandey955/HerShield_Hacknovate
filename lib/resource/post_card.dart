@@ -71,7 +71,7 @@ class _PostCardState extends State<PostCard> {
             height: MediaQuery.of(context).size.height * 0.35,
             width: 360.0,
             child: Image.network(
-              'https://images.unsplash.com/photo-1705646742193-d0ffd590193b?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              'https://img.freepik.com/free-vector/international-day-elimination-violence-against-women-background-with-girl_23-2148702311.jpg?w=1060&t=st=1715395756~exp=1715396356~hmac=b34cf6d9671c3d5237ffe226233849f556a74b461157ce3ddabdeceb0e2d9e70',
               fit: BoxFit.cover,
             ),
           ),
